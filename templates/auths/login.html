@@ -1,0 +1,42 @@
+{% extends "auths/base.html" %}
+{% load static %}
+{% block Login %}{% endblock Login %}
+{% block content %}
+<form method="POST" >
+	{% csrf_token %}
+	<div class="row justify-content-md-center">
+		<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
+			<div class="login-screen">
+				<div class="login-box">
+					<a href="#" class="login-logo">
+						<img src="{% static "img/toitombur.png" %}" alt="CRlogo" />
+					</a>
+					<h5>Welcome,<br />Please Login to your Account.</h5>
+					<div class="form-group">
+						<input type="text" name="useremail" class="form-control" placeholder="Email Address or ID" />
+					</div>
+					<div class="form-group">
+						<input type="password" name="userpassword" class="form-control" placeholder="Password" />
+					</div>
+					<div class="actions mb-4">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="remember_pwd">
+							<label class="custom-control-label" for="remember_pwd">Remember me</label>
+						</div>
+						<button type="submit" class="btn btn-primary">Login</button>
+					</div>
+					<div class="forgot-pwd">
+						<a class="link" href="#">Forgot password?</a>
+					</div>
+					<hr>
+					<div class="actions align-left">
+						<span class="additional-link">New here?</span>
+						<a href="{% url "registration" %}" class="btn btn-dark">Create an Account</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+{% endblock content %}

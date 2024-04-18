@@ -1,0 +1,45 @@
+{% extends "auths/base.html" %}
+{% load static %}
+{% block title %}Sign Up{% endblock title %}
+{% block content %}
+
+<form action=""  method="POST" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    <div class="row justify-content-md-center">
+        <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12">
+            <div class="login-screen">
+                <div class="login-box">
+                    <a href="#" class="login-logo">
+                        <img src="{% static "img/toitombur.png" %}" alt="logo">
+                    </a>
+                    <h5>Rigister your new account</h5>
+
+                    <div class="form-group">
+                        {% for field in form %}
+                        {{field.label| title}}
+                        {{field}}
+                        {% if field.errors %}
+                        {% for error in field.errors %}
+                        <p class="text-danger">{{error}}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+                    
+                    <div class="actions mb-4">
+                        {% if user.is_authenticated %}                        
+                        <a class="btn btn-danger" href="{% url "user_logout" %}">Logout</a>                        
+                        {% endif %}
+                        <button type="submit" class="btn btn-primary">Signup</button>
+                    </div>
+                    <hr>
+                    <div class="m-0">
+                        <span class="additional-link">Have an account? <a href="{% url "user_login" %}" class="btn btn-dark">Login</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock content %}

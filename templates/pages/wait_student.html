@@ -1,0 +1,67 @@
+<div class="table-container">
+    <div class="table-responsive">
+        <table class="table custom-table m-0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Intake</th>
+                    <th>Section</th>
+                    <th>Department</th>
+                    <th>Is CR</th>
+                    <th>Shift</th>
+                    <th>Facebook</th>
+                    <th>Phone</th>
+                    <th class="text-center">Approval</th>
+                    <th class="text-center">Remove</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for student in pending_student %}
+                <tr>
+                    <td>{{student.name}}</td>
+                    <td>{{student.intake}}</td>
+                    <td>{{student.section}}</td>
+                    <td>{{student.department}}</td>
+                    <td><span class="badge badge-{% if student.is_class_cr %}danger{% else %}info{% endif %}">{{student.is_class_cr}}</span></td>
+                    <td>{{student.shift}}</td>
+                    <td class="text-danger"><a href="{{student.facebook_profile}}">Open Link</a></td>
+                    <td class="text-right">{% if student.contact_number %}{{student.contact_number}}{% else %} --------- {% endif %}</td>
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <input type="hidden" name ="approve" value={{student.uid}}>
+                        <td class="text-center"><button type="submit" class="btn btn-outline-success btn-sm">Approve</button></td>
+                    </form>
+                    <td class="text-center"><button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#basicModal">Delete</button></td>
+                </tr>
+
+                <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="basicModalLabel">Modal Title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you really want to remove this profile?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-primary">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+               
+                
+            </tbody>
+        </table>
+    </div>
+</div>

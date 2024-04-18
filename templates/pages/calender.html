@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load custom_tags %}
+{% block title %}Calender{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static "vendor/calendar/css/core/main.css" %}" />
+<link rel="stylesheet" href="{% static "vendor/calendar/css/daygrid/main.css" %}" />
+<link rel="stylesheet" href="{% static "vendor/calendar/css/list/main.css" %}" />
+{% endblock css %}
+{% block content %}
+
+
+<!-- row -->
+<div class="row gutters">
+    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+        
+        <div class="card m-0">
+            <div class="card-body">
+                <div id="calendarGoogle"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- row end -->
+
+{% endblock content %}
+
+{% block js %}
+		<!-- Fullcalendar -->
+		<script src="{% static "vendor/calendar/js/core/main.min.js" %}"></script>
+		<script src="{% static "vendor/calendar/js/daygrid/main.min.js" %}"></script>
+		<script src="{% static "vendor/calendar/js/interaction/main.min.js" %}"></script>
+		<script src="{% static "vendor/calendar/js/list/main.min.js" %}"></script>
+		<script src="{% static "vendor/calendar/js/google-calendar/main.min.js" %}"></script>
+		<script src="{% static "vendor/calendar/js/custom-google-calendar.js" %}"></script>
+
+{% endblock js %}

@@ -1,0 +1,65 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load custom_tags %}
+{% block title %}All CRs'{% endblock title %}
+{% block css %}
+
+{% endblock css %}
+{% block content %}
+
+<div class="table-container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 d-flex justify-content-center"> 
+            <form class="d-flex flex-wrap align-items-center mb-2">
+                {% for field in search_option.form %}
+                <div class="form-group mb-2 me-2 d-flex align-items-center">
+                    <label class="text-dark ml-2 mr-2">{{ field.label }} </label> 
+                    {{ field|add_class:"form-control" }}
+                </div>
+                {% endfor %}
+                <button class="btn btn-primary mb-2 ml-2" type="submit"><i class="icon-search1"></i></button>
+
+            </form> 
+        </div>
+    </div>
+    
+      
+    <div class="table-responsive">
+        
+        <table class="table custom-table m-0">
+            <thead>
+                
+                <tr>
+                    <th>Name</th>
+                    <th>Intake</th>
+                    <th>Section</th>
+                    <th>Department</th>
+                    <th>Shift</th>
+                    <th>Facebook</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for student in crs %}
+                <tr>
+                    <td>{{student.name}}</td>
+                    <td>{{student.intake}}</td>
+                    <td>{{student.section}}</td>
+                    <td>{{student.department}}</td>
+                    <td>{{student.shift}}</td>
+                    <td class="text-left"><a href="{{student.facebook_profile}}">Open Link</a></td>
+                    <td class="text-left">{% if student.contact_number %}{{student.contact_number}}{% else %} --------- {% endif %}</td>
+                    
+                </tr>
+
+
+                {% endfor %}
+               
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,56 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Announcements{% endblock title %}
+{% block css %}
+<style>
+    .bg-for-you {
+      background-color: #d9eee1;
+    }
+</style>
+{% endblock css %}
+{% block content %}
+
+<div class="row gutters justify-content-center"> 
+    <h4>--- ANNOUNCEMENTS ---</h4>
+    <div class="col-md-12 col-12  subscribe-form">
+        <div class="customScroll5 mt-0 mb-0">
+            <ul class="user-messages">
+                {% for announce in announcements %}
+                <li class="clearfix bg-for-you rounded p-2">
+                    <div class="customer"><img src="{{announce.who_posted.image.url}}" alt="pic"></div>
+                    <div class="delivery-details ">
+                        <span class="badge badge-primary">{{announce.who_posted}}</span>
+                        <span class="badge badge-info">{{announce.created_at}}</span>
+                        <p>{{announce.announcement}}</p>
+                
+                            <div class="row gutters">
+                                {% if announce.image %}
+                                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+                                    <a href="{{announce.image.url}}" class="effects">
+                                        <img src="{{announce.image.url}}" class="img-fluid" alt="pic">
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </div>
+            
+                    </div>
+                </li>                       
+                {% endfor %}
+            </ul>
+        </div>            
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+
+<script src="{% static "vendor/slimscroll/slimscroll.min.js" %}"></script>
+<script src="{% static "vendor/slimscroll/custom-scrollbar.js" %}"></script>
+{% comment %} 
+<script src="{% static "vendor/gallery/baguetteBox.js" %}" async=""></script>
+<script src="{% static "vendor/gallery/plugins.js" %}" async=""></script>
+<script src="{% static "vendor/gallery/custom-gallery.js" %}" async=""></script>
+ {% endcomment %}
+
+{% endblock js %}

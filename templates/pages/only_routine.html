@@ -1,0 +1,47 @@
+<div class="card">
+
+    <div class="card-header">
+        <div class="card-title">Class Routine</div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table custom-table table-sm m-0">
+                <thead>
+                    <tr>
+                        <th>Date/Time</th>
+                        <th>08:00 AM to 09:15 AM</th>
+                        <th>09:15 AM to 10:30 AM</th>
+                        <th>10:30 AM to 11:45 AM</th>
+                        <th>11:45 AM to 01:00 PM</th>
+                        <th>01:30 PM to 02:45 PM</th>
+                        <th>02:45 PM to 04:00 PM</th>
+                        <th>04:00 PM to 05:15 PM</th>
+                        <th>05:15 PM to 06:30 PM</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in routine.items %}
+                    <tr>
+                        <td>{{data.0}}</td>
+                        {% for val in data.1 %}
+                        <td>
+                            {% if val %}
+                            {{val.course_code}} <br>
+                            {{val.intake}}-{{val.section}} <br>
+                            FC: {{val.faculty_short_name}} <br>
+                            B: {{val.building}} ⇒ R: {{val.room}}
+                            {% endif %}
+
+                        </td>
+                        {% endfor %}
+                    
+                    </tr>
+                    {% endfor %}
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

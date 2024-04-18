@@ -1,0 +1,150 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block css %}
+		
+{% endblock css %}
+{% block content %}
+
+<div class="row gutters mt-0">
+    <div class="col-12 mt-0">
+        <div class="card highlight pt-1">
+            <marquee ><h5>CSE 324(Database Lab) - Room:908 (B-2) | 12:45AM</h5></marquee>
+        </div>
+    </div>
+</div>
+<div class="row gutters">
+    <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Upcomming Class Tests, Exams</div>
+            </div>
+            <div class="card-body">
+                
+                <!-- Row starts -->
+                <div class="row gutters">
+                    {% if exams %}
+                   
+                    {% for exam in exams %}
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
+                        <div class="goal-card">
+                            <h5>{{exam.course_name | truncatechars:"14"}}</h5>
+                            <p class="percentage">{{exam.date}}</p>                            
+                            <h4>{{exam.course_code}}</h4>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <h3>Have Fun Buddy. No exam in 10 Days</h3>
+                    {% endif %}
+                </div>
+                <!-- Row ends -->
+
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12">
+
+{% comment %} 
+        <div class="launch-box h-180">
+            <h6>Mid Term Exam</h6>
+            <p>Friday, February 1</p>
+            <h4 id="daysLeft">
+                <div class="num">
+                    50 <span class="text"> Days Left</span>
+                </div>
+            </h4>
+        </div>
+
+         {% endcomment %}
+         
+        <div class="risks-block high h-117">
+            <i class="icon-warning1"></i>
+            <div class="risk-details">
+                <h2>{{remain_task}}</h2>
+                <p>Pending Assignments or Reports<span>(Check the tasks)</span></p>
+            </div>
+        </div>
+        
+        <div class="risks-block low h-117">
+            <i class="icon-{% if exams.count > 0 %}warning1{% else %}check_circle{% endif %}"></i>
+            <div class="risk-details">
+                <h2>{{exams.count}}</h2>
+                <p>Upcomming Exams left<span>(Check exams)</span></p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="row gutters">
+    
+    <div class="col-xl-9 col-lg-4 col-md-12 col-sm-12 col-12">
+        {% include "pages/only_routine.html" %}
+    </div>
+
+    <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Announcements</div>
+            </div>
+            <div class="card-body">
+                <div class="customScroll5">
+                    <ul class="user-messages">
+                        {% for announce in announcements %}
+                        <li class="clearfix bg-for-you rounded p-2">
+                            <div class="customer"><img src="{{announce.who_posted.image.url}}" alt="pic"></div>
+                            <div class="delivery-details ">
+                                <span class="badge badge-primary">{{announce.who_posted}}</span>
+                                <p>{{announce.announcement}}</p>
+                        
+                            </div>
+                        </li>                       
+                        {% endfor %}                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title text-center">Students of Intake {{students.0.intake}} Section {{students.0.section.section}} </div>
+    </div>
+    <div class="row gutters">
+    
+        {% for student in students %}
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12">
+            <figure class="user-card">
+                <figcaption>
+                    <img src="{{student.image.url}}" alt="profile pic" class="profile">
+                    <h5>{{student.name}}</h5>
+                    
+                    <ul class="list-group">
+                        <li class="list-group-item">ID: {{student.personal_id}}</li>
+                        <li class="list-group-item">{{student.contact_number}}</li>
+                    </ul>
+                </figcaption>
+            </figure>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block js %}
+
+<script src="{% static "vendor/slimscroll/slimscroll.min.js" %}"></script>
+<script src="{% static "vendor/slimscroll/custom-scrollbar.js" %}"></script>
+
+{% endblock js %}

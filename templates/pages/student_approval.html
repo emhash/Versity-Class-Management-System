@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Approve{% endblock title %}
+{% block css %}
+		
+{% endblock css %}
+{% block content %}
+
+<!-- ADMIN or CR can be able to approve | BUT HERE CLASS CR QUERY GETTING NOT FOUND -->
+{% if user.role == 'admin' or user.role == "cr" %}
+{% include "pages/wait_student.html" %}
+{% endif %}
+
+{% endblock content %}

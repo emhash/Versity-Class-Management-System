@@ -1,0 +1,58 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Assignments{% endblock title %}
+{% block css %}
+		
+{% endblock css %}
+{% block content %}
+<div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        {% if user.role == 'cr' %}
+        <div class="text-right mb-4">
+            <a href="{% url "add_assign" %}" class="btn btn-primary" >+ Add New Assignment or Notice of Report</a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Upcomming all Assignments and Reports or Tasks</div>
+
+            </div>
+            <div class="row gutters justify-content-center">
+                <div class="col-xl-9 col-lg-9 col-md-10 col-sm-12">
+
+                    <div class="timeline">
+                        
+                        {% for assign in assignments %}
+                        <div class="timeline-row">
+                        <a href="{% url "view_assign" assign.uid %}">
+                                <div class="timeline-time">
+                                    {{assign.date}}<small>12.00 AM</small>
+                                </div>
+                                <div class="timeline-content">
+                                    <i class="icon-code"></i>
+                                    <h4>{{assign.get_types_display}}</h4>
+                                    <p>
+                                        {{assign.assignment_title}}
+                                    </p>
+                                    
+                                    <div class="">
+                                        <span class="badge badge-pill badge-white">{{assign.course_code}}</span>
+                                        <span class="badge badge-pill badge-white">{{assign.course_title}}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Two divide option of Lab report and Assignment lile col-md-6 and 6 -->
+{% endblock content %}

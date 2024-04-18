@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Add Routine{% endblock title %}
+{% block css %}
+		
+{% endblock css %}
+{% block content %}
+<div class="row gutters">
+    {% if user.role == 'cr' or user.is_superuser %}
+    <div class=" col-md-4 ">
+        {% include "pages/only_form.html" %}
+    </div>
+    
+    {% else %}
+    
+    {% endif %}
+    <div class="col-md-8">
+        {% include "pages/only_routine.html" %}
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
