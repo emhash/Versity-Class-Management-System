@@ -18,10 +18,10 @@
 
 <div class="image-container">
 <p align='center'>
-<img alt="demo" width="500" src="https://github.com/emhash/Mini-Project-Python_2022/assets/109217697/3af3e280-4e5a-43ee-be56-cde7d4aa6a46">
-<img alt="demo" width="500" src="https://github.com/emhash/Mini-Project-Python_2022/assets/109217697/a8f31d73-da7c-4c36-9348-c0fbe8efbac6">
-<img alt="demo" width="500" src="https://github.com/emhash/Mini-Project-Python_2022/assets/109217697/56241c1b-3995-4def-9e8c-9b3238806dce">
-<img alt="demo" width="500" src="https://github.com/emhash/Mini-Project-Python_2022/assets/109217697/1195905d-d885-41d4-a5ff-d7a5fe8c4ec0">
+<img alt="demo" width="400" src="https://github.com/emhash/Mini-Project-Python_2022/assets/109217697/3af3e280-4e5a-43ee-be56-cde7d4aa6a46">
+<img alt="demo" width="400" src="https://github.com/emhash/Mini-Project-Python_2022/assets/109217697/a8f31d73-da7c-4c36-9348-c0fbe8efbac6">
+<img alt="demo" width="400" src="https://github.com/emhash/Mini-Project-Python_2022/assets/109217697/56241c1b-3995-4def-9e8c-9b3238806dce">
+<img alt="demo" width="400" src="https://github.com/emhash/Mini-Project-Python_2022/assets/109217697/1195905d-d885-41d4-a5ff-d7a5fe8c4ec0">
 </p>
 </div>
 
