@@ -9,6 +9,61 @@ from .models import UpcomingExams, ClassRoutine
 from .filters import StudentFilter
 from .extra_code import routine_maker, allowed_users
 
+# 06-03-2024 Wrorking here (Done)
+@login_required()
+@allowed_users(allowed_role=['student', 'cr'])
+def homepage(request):
+    now = timezone.now()
+    student = get_object_or_404(Student, account = request.user.profile)
+    his_intake = student.intake    
+    his_department = student.department
+    his_section = student.section
+    # his_shift = ------
+    # ------ Retrive all Upcomming exams -----
+    all_exams = UpcomingExams.objects.filter(
+        intake= his_intake,
+        department= his_department,
+        section= his_section,
+        date__gte=now
+    ).order_by("date")
+
+    announcements = Announcements.objects.filter(
+        intake = his_intake,
+        department = his_department,
+        section = his_section,
+    ).order_by("-created_at")
+
+    assignments = Assignments.objects.filter(
+        intake = his_intake,
+        department = his_department,
+        section = his_section,
+        date__gte=now,
+    ).order_by("date")
+
+    students = Student.objects.filter(
+        intake = his_intake,
+        department = his_department,
+        section = his_section,
+        account__is_approved = True,
+    ).order_by("personal_id")[:8]
+
+
+    # ------ Retrive class routine for specific intake , section ------
+    class_routine = ClassRoutine.objects.filter(intake = his_intake, 
+                                                section = his_section, 
+                                                department = his_department
+                                                )
+    
+    context = {
+        "exams":all_exams,
+        "routine":routine_maker(class_routine),
+        "announcements":announcements,
+        "students":students,
+        "remain_task":assignments.count(),
+        
+    }            
+    return render(request, "pages/index.html", context)
+    
 # -========== LOGIN AND REGISTER PART STARTS +============-------
 
 # 15-02-2024 Wrorking here (Done)
@@ -93,63 +148,6 @@ def user_login(request):
 
 
 # +=======--------- LOGIN and REGISTER PART DONE --------=============
-
-
-# 06-03-2024 Wrorking here (Done)
-@login_required()
-@allowed_users(allowed_role=['student', 'cr'])
-def homepage(request):
-    now = timezone.now()
-    student = get_object_or_404(Student, account = request.user.profile)
-    his_intake = student.intake    
-    his_department = student.department
-    his_section = student.section
-    # his_shift = ------
-    # ------ Retrive all Upcomming exams -----
-    all_exams = UpcomingExams.objects.filter(
-        intake= his_intake,
-        department= his_department,
-        section= his_section,
-        date__gte=now
-    ).order_by("date")
-
-    announcements = Announcements.objects.filter(
-        intake = his_intake,
-        department = his_department,
-        section = his_section,
-    ).order_by("created_at")
-
-    assignments = Assignments.objects.filter(
-        intake = his_intake,
-        department = his_department,
-        section = his_section,
-        date__gte=now,
-    ).order_by("date")
-
-    students = Student.objects.filter(
-        intake = his_intake,
-        department = his_department,
-        section = his_section,
-        account__is_approved = True,
-    ).order_by("personal_id")[:8]
-
-
-    # ------ Retrive class routine for specific intake , section ------
-    class_routine = ClassRoutine.objects.filter(intake = his_intake, 
-                                                section = his_section, 
-                                                department = his_department
-                                                )
-    
-    context = {
-        "exams":all_exams,
-        "routine":routine_maker(class_routine),
-        "announcements":announcements,
-        "students":students,
-        "remain_task":assignments.count(),
-        
-    }            
-    return render(request, "pages/index.html", context)
-    
 
 # 01-02-2024 Wrorking here (Done)
 @login_required()
@@ -410,7 +408,7 @@ def view_assignment(request, the_id):
     }
     return render(request, "pages/view_assignment.html", context)
 
-# 17-04-2024 --- WORKING HERE - next add (add announcement button)
+# 17-04-2024 --- WORKING HERE  - DONE
 @login_required()
 @allowed_users(allowed_role=['student', 'cr'])
 def all_announcement(request):
@@ -423,17 +421,38 @@ def all_announcement(request):
         intake = intake,
         department = depart,
         section = section,
-    ).order_by("created_at")
+    ).order_by("-created_at")
     context = {
         "announcements":announcements,
     }
 
     return render(request, "pages/all_announcement.html",context)
 
+# 21-04-2024 -- DONE
 @login_required()
 @allowed_users(allowed_role=['student', 'cr'])
 def add_announcement(request):
-    return render(request, "pages/add_announcement.html")
+    student = request.user.profile.student
+    if request.method == "POST":
+        form = AnnouncementsForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                the_form = form.save(commit=False)
+                the_form.who_posted = student
+                the_form.intake = student.intake
+                the_form.section = student.section
+                the_form.department = student.department
+                the_form.save()
+                messages.success(request, "Added successfully!")
+                return redirect(request.path)
+            except Exception as e:
+                messages.warning(request, f"Error: {e}")
+                return redirect("all_announcement") 
+    else:
+        form = AnnouncementsForm()
+    
+    context = {"form":form}
+    return render(request, "pages/add_announcement.html", context)
 
 
 #1 USE TIMELINE OF NEXT ONE WEEK.

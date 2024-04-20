@@ -83,7 +83,7 @@ class AnnouncementsForm(forms.ModelForm):
     class Meta:
         model = Announcements
         fields = '__all__'
-        exclude = ['intake','department','section']
+        exclude = ['intake','department','section', 'who_posted']
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
