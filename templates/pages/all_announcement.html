@@ -12,6 +12,13 @@
 
 <div class="row gutters justify-content-center"> 
     <h4>--- ANNOUNCEMENTS ---</h4>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        {% if user.role == 'cr' %}
+        <div class="text-right mb-4">
+            <a href="{% url "add_announcement" %}" class="btn btn-primary" >+ Add New Announcement</a>
+        </div>
+        {% endif %}
+    </div>
     <div class="col-md-12 col-12  subscribe-form">
         <div class="customScroll5 mt-0 mb-0">
             <ul class="user-messages">
@@ -39,6 +46,7 @@
             </ul>
         </div>            
     </div>
+    
 </div>
 
 {% endblock content %}

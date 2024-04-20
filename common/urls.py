@@ -17,5 +17,6 @@ urlpatterns = [
     path('view-assignments/<str:the_id>', views.view_assignment, name="view_assign"),
     path('calender/', views.calender, name="calender"),
     path('all-announcements/', views.all_announcement, name="all_announcement"),
+    path('add-announcement/', views.add_announcement, name="add_announcement"),
 
 ]

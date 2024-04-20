@@ -430,6 +430,12 @@ def all_announcement(request):
 
     return render(request, "pages/all_announcement.html",context)
 
+@login_required()
+@allowed_users(allowed_role=['student', 'cr'])
+def add_announcement(request):
+    return render(request, "pages/add_announcement.html")
+
+
 #1 USE TIMELINE OF NEXT ONE WEEK.
 #2 USE Chat App 
 #3 

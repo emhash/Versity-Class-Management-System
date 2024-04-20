@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Add Announcement{% endblock title %}
+{% block css %}
+		
+{% endblock css %}
+{% block content %}
+    <div class="card m-0">
+        <div class="card-header">
+            <div class="card-title">Add new announcement </div>
+        </div>
+        <div class="card-body">
+            {% include "pages/only_form.html" %}
+        </div>
+    </div>
+{% endblock content %}
