@@ -14,6 +14,14 @@
 <hr>
 <h2 align='center'> Versity class task management system </h2>
 
+## Demo:
+
+Live Website: https://bubtcr.pythonanywhere.com/
+<br>
+CR mail: demo@democr.com
+<br>
+Password: 111111qqqqqq
+
 ## Demo Screenshots
 
 <div class="image-container">
@@ -57,8 +65,8 @@ python manage.py runserver
 ```
 ** In case of migration problem migrate and then run the server **
 ```bash 
-python manage.py migrate
 python manage.py makemigrations
+python manage.py migrate
 
 ```
 ## Tech Stack
