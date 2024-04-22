@@ -3,12 +3,55 @@
 {% load custom_tags %}
 {% block title %}chat{% endblock title %}
 {% block css %}
-
+<style>
+    .addme {
+        
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    .addme:hover {
+        background-color: gold;
+    }
+    .addme:active {
+        background-color: black;
+    }
+</style>
 {% endblock css %}
 {% block content %}
 
+<div class="row gutters justify-content-center">
 
-
+    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12">
+        
+        <div class="risks-block high h-117 addme " onclick="redirectToPage('{% url "chat_with" "crs" %}')">
+            <i class="icon-chat"></i>
+            <div class="risk-details">
+                <h2>CRs</h2>
+                <p>Chat with other intake's CR</p>
+            </div>
+        </div> 
+    </div>
+    
+    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12">
+        
+            <div class="risks-block low h-117 addme" onclick="redirectToPage('{% url "chat_with" "mates" %}')">
+                <i class="icon-chat"></i>
+                <div class="risk-details">
+                    <h2>Mates</h2>
+                    <p>Chat under your section.</p>
+                </div>
+            </div>
+       
+    
+        <script>
+            function redirectToPage(url) {
+                window.location.href = url;
+            }
+        </script>
+    </div>
+</div>
 
 
 {% endblock content %}
+

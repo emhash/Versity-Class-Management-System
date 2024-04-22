@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load custom_tags %}
+{% block title %}chat{% endblock title %}
+
+{% block content %}
+
+{% include "chat/chatbox.html" %}
+
+{% endblock content %}
+
+{% block js %}
+
+<script src="{% static "vendor/slimscroll/slimscroll.min.js" %}"></script>
+<script src="{% static "vendor/slimscroll/custom-scrollbar.js" %}"></script>
+
+{% endblock js %}

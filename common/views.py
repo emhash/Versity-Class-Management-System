@@ -456,14 +456,6 @@ def add_announcement(request):
 
 
 
-# 22-04-2024 -- DONE
-@login_required()
-@allowed_users(allowed_role=['student', 'cr'])
-def chat_view(request):
-
-    return render(request, "chat/chat.html")
-
-
 #1 USE TIMELINE OF NEXT ONE WEEK.
 #2 USE Chat App 
 #3 

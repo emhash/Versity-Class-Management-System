@@ -1,0 +1,158 @@
+
+<div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="chat-section">
+            <!-- Row start -->
+            <div class="row no-gutters">
+
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-2 col-3">
+                    <div class="users-container">
+                        <div class="chat-search-box">
+                            <div class="input-group">
+                                <input class="form-control" placeholder="Search" />
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="icon-magnifying-glass"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="usersContainerScroll">
+                            <ul class="users">
+                                {% if chat_mate %}
+                                {% for mate in chat_mate %}
+                                <li class="person" data-chat="person4">
+                                    <div class="user">
+                                        <img src="{{mate.image.url}}" alt="userPic" />
+                                        <span class="status online"></span>
+                                    </div>
+                                    <p class="name-time">
+                                        <span class="name">{{mate.name}}</span>
+                                        <span class="time">4 hours ago</span>
+                                    </p>
+                                </li>
+                                {% endfor %}
+                                
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-9 col-lg-9 col-md-8 col-sm-10 col-9">
+                    <div class="active-user-chatting">
+                        <div class="active-user-info">
+                            <img src="img/user.png" class="avatar" alt="avatar" />
+                            <div class="avatar-info">
+                                <h5>Mr Person</h5>
+                                <div class="typing">Typing ...</div>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <a href="#" data-toggle="modal" data-target="#videoCall">
+                                <i class="icon-video"></i>
+                            </a>
+                            <a href="#" data-toggle="modal" data-target="#audioCall">
+                                <i class="icon-phone1"></i>
+                            </a>
+                        </div>
+
+                        <!-- Audio Call Modal -->
+                        <div class="modal fade" id="audioCall" tabindex="-1" role="dialog" aria-labelledby="audioCallLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="call-container">
+                                            <div class="current-user">
+                                                <img src="img/user24.png" alt="Avatar" >
+                                            </div>
+                                            <h5 class="calling-user-name">
+                                                Mr Person <span class="calling">Calling...</span>
+                                            </h5>
+                                            <div class="calling-btns">
+                                                <button class="btn btn-secondary" data-dismiss="modal">
+                                                    <i class="icon-x"></i>
+                                                </button>
+                                                <button class="btn btn-primary">
+                                                    <i class="icon-phone1"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Call Modal -->
+                        <div class="modal fade" id="videoCall" tabindex="-1" role="dialog" aria-labelledby="videoCallLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="call-container">
+                                            <div class="current-user">
+                                                <img src="img/user22.png" alt="Avatar" >
+                                            </div>
+                                            <h5 class="calling-user-name">
+                                                Zhenya Rynzhuk <span class="calling">Calling...</span>
+                                            </h5>
+                                            <div class="calling-btns">
+                                                <button class="btn btn-secondary" data-dismiss="modal">
+                                                    <i class="icon-x"></i>
+                                                </button>
+                                                <button class="btn btn-primary">
+                                                    <i class="icon-video"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="chat-container">
+                        <div class="chatContainerScroll">
+
+                            <ul class="chat-box">
+
+                                <li class='chat-left'>
+                                    <div class='chat-avatar'>
+                                        <img src="img/user6.png" alt="useImg" />
+                                        <div class='chat-name'>Dildar</div>
+                                    </div>
+                                    <div class='chat-text'>
+                                        <p>Hello, I'm Dildar.<br />How can I help you today?<br />The basic setup requires targetting an input element and invoking the picker:</p>
+                                        <div class='chat-hour'>08:55 <span class='icon-done_all'></span></div>
+                                    </div>
+                                </li>
+                                <li class='chat-right'>
+                                    <div class='chat-text'>
+                                        <p>Hi, Dildar<br />
+                                        I need more information about Developer Plan.</p>
+                                        <div class='chat-hour'>08:56 <span class='icon-done_all'></span></div>
+                                    </div>
+                                    <div class='chat-avatar'>
+                                        <img src="img/user.png" alt="usrpic" />
+                                        <div class='chat-name'>Mr Person</div>
+                                    </div>
+                                </li>
+                                <li class="divider">Dec 18, 2019</li>
+                                
+                            </ul>
+                        </div>
+                        <div class="chat-form">
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Type your message here..."></textarea>
+                                <button class="btn btn-primary">
+                                    <i class="icon-send"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Row end -->
+        </div>
+    </div>
+</div>
