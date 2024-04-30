@@ -22,6 +22,13 @@ CR mail: demo@democr.com
 <br>
 Password: 111111qqqqqq
 
+
+<p>
+This project is helpful for the CRs who suffers to manage the class tasks. Each time the CR has to mention about the re-shedule classes, new assignments, notify about the upcoming CT or Tests and so on. All these different task have to perform in different platform such as - Google Classroom, Messenger, Whatsapp or Google Sheet and so on, What if all these can be manage in one platform ? 
+YES. This is the solution.
+  
+</p>
+
 ## Demo Screenshots
 
 <div class="image-container">
