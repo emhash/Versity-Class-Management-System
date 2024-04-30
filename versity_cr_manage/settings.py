@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -65,18 +67,44 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'versity_cr_manage.wsgi.application'
 
+
+# DATABASE 1 - Sqlite
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         # 'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#         # 'NAME': 'railway',
+#         # 'USER': 'postgres',
+#         # 'PASSWORD': 'bFaCgd-DgcaCcG6FGb61g-1dF*e62FfC',
+#         # 'HOST': 'monorail.proxy.rlwy.net',
+#         # 'PORT': '41112',
+#     }
+# }
+
+# DATABASE -2 SQL
+
+load_dotenv()
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # 'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # 'NAME': 'railway',
-        # 'USER': 'postgres',
-        # 'PASSWORD': 'bFaCgd-DgcaCcG6FGb61g-1dF*e62FfC',
-        # 'HOST': 'monorail.proxy.rlwy.net',
-        # 'PORT': '41112',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': 'localhost',  # or the hostname where  MySQL server is running
+        'PORT': os.getenv('DB_PORT'),      # or the port on which  MySQL server is listening
     }
 }
+
+'''
+NOTEs :
+Here first in SQL we need a database by 
+
+'''
+
+
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

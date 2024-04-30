@@ -19,5 +19,6 @@ urlpatterns = [
     path('all-announcements/', views.all_announcement, name="all_announcement"),
     path('add-announcement/', views.add_announcement, name="add_announcement"),
 
+    path('temp/', views.test_function, name="temp"),
 
 ]

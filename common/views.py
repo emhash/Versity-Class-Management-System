@@ -459,3 +459,13 @@ def add_announcement(request):
 #1 USE TIMELINE OF NEXT ONE WEEK.
 #2 USE Chat App 
 #3 
+
+
+def test_function(request):
+    for p in Student.objects.raw("SELECT * FROM common_student"):
+        print(p)
+
+    context = {
+        "students": None
+    }
+    return render(request, "pages/temp.html", context)
