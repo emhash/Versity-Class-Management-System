@@ -73,13 +73,7 @@ WSGI_APPLICATION = 'versity_cr_manage.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
-#         # 'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': BASE_DIR / 'db.sqlite3',
-#         # 'NAME': 'railway',
-#         # 'USER': 'postgres',
-#         # 'PASSWORD': 'bFaCgd-DgcaCcG6FGb61g-1dF*e62FfC',
-#         # 'HOST': 'monorail.proxy.rlwy.net',
-#         # 'PORT': '41112',
 #     }
 # }
 
@@ -99,7 +93,7 @@ DATABASES = {
 
 '''
 NOTEs :
-Here first in SQL we need a database by 
+Here first in SQL we need a database of SQl, then host and name and pass have to add.  
 
 '''
 

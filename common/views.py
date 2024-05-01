@@ -3,11 +3,16 @@ from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from dotenv import load_dotenv
+
 
 from .forms import *
 from .models import UpcomingExams, ClassRoutine
 from .filters import StudentFilter
 from .extra_code import routine_maker, allowed_users
+
+import os
+load_dotenv()
 
 # 06-03-2024 Wrorking here (Done)
 @login_required()
@@ -395,7 +400,10 @@ def add_assignments(request):
 @login_required()
 @allowed_users(allowed_role=['student','cr'])
 def calender(request):
-    return render(request, "pages/calender.html")
+    context = {
+        "calenderAPI": os.getenv('API_CALENDER')
+    }
+    return render(request, "pages/calender.html", context)
 
 
 # 16-04-2024 ---<<==DONE
@@ -454,13 +462,24 @@ def add_announcement(request):
     context = {"form":form}
     return render(request, "pages/add_announcement.html", context)
 
-
+#  ------ UPCOMING CHANGES NEED -----------
 
 #1 USE TIMELINE OF NEXT ONE WEEK.
 #2 USE Chat App 
-#3 
+#3 FIX - calender API need to hide, 
+#4 Assignment and exam edit option
+#5 Other sections or intakes student who took improvement - handle them
+#6 After section modification - means new registration of new semester 
+#  there could be a chance to change in mates of a section of a intake 
+#  so have to add a session or semester option to re-apply and re-pending.
+#7 Let the Admin Register and add one admin to approve another admin or studentCR .
+#8 Admin will only see the pending section , Not the entire panel. Make sure to permission fixed
+#9 Edit the routine -- clicking the course at the routine that perticular class of that day 
+#  can be edit by CR.
 
+# ---------------------------------------------------------
 
+# Temprorary view function below -->
 def test_function(request):
     for p in Student.objects.raw("SELECT * FROM common_student"):
         print(p)

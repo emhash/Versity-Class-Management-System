@@ -3175,10 +3175,10 @@ ul.statistics {
 
 .goal-card {
   background: #ffffff;
-  border: 1px solid #e4e9f1;
+  border: 1px solid #5294fd;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  border-radius: 2px;
+  border-radius: 15px;
   padding: 1rem;
   margin: 0 0 1rem 0; }
   .goal-card h5 {
@@ -4906,9 +4906,20 @@ button:focus {
     border-top-left-radius: 2px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0; }
-  .card.highlight {
-    border: 1px solid #1a8e5f;
-    background: #1a8e5f; }
+    .card.highlight {
+      border: 1px solid #ea490b;
+      background: #ea490b;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    
+  .card.highlight1 {
+    border: 1px solid #32a2a8;
+    background: #32a2a8; }
+
 
 @media (max-width: 767px) {
   .card .card-header {

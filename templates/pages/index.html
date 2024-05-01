@@ -6,22 +6,40 @@
 {% endblock css %}
 {% block content %}
 
-<div class="row gutters mt-0">
-    <div class="col-12 mt-0">
-        <div class="card highlight pt-1">
-            <marquee ><h5>CSE 324(Database Lab) - Room:908 (B-2) | 12:45AM</h5></marquee>
+{% comment %} <div class="row mt-0">
+    <div class="col-md-4 justify-content-center">
+        <div class="card highlight pt-1 me-2">
+            <h5> >> CSE317 start in 13:30 min | Latest Announced : </h5>
         </div>
+
     </div>
+    <div class="col-md-8">
+            <div class="card highlight pt-1 ">
+                <h5>CSE 324(Database Lab) - Room:908 (B-2) | 12:45AM</h5>
+            </div>
+    </div>
+</div> {% endcomment %}
+<div class="row gutters mt-0">
 </div>
 <div class="row gutters">
     <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
-            <div class="card-header">
-                <div class="card-title">Upcomming Class Tests, Exams</div>
+            <div class="card highlight pt-1 mb-1 ">
+                <h5>Running - CSE 324(Database Lab) - Room:908 (B-2) | 
+                    Next - CSE320 Network Lab <span><i class="icon-clock"></i></span> 19:45:30</h5>
             </div>
+            {% if remain_task %}
+            <div class="card highlight1 mt-0 pt-1">
+                <marquee ><h5>CSE 324(Database Lab) - Room:908 (B-2) | 12:45AM</h5></marquee>
+            </div>
+            {% endif %}
             <div class="card-body">
                 
+            
                 <!-- Row starts -->
+                
+                <div class="card-title text-danger">Upcoming Exam</div>
+                
                 <div class="row gutters">
                     {% if exams %}
                    
