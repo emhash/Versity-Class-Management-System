@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from dotenv import load_dotenv
-
+from datetime import datetime, timedelta
 
 from .forms import *
 from .models import UpcomingExams, ClassRoutine
@@ -58,13 +58,61 @@ def homepage(request):
                                                 section = his_section, 
                                                 department = his_department
                                                 )
+    cls_routine = routine_maker(class_routine)
+
+    times = {
+    "08:00:00":"08:00AM to 09:15AM",
+    "09:15:00":"09:15AM to 10:30AM",
+    "10:30:00":"10:30AM to 11:45AM",
+    "11:45:00":"11:45AM to 01:00PM",
+    "13:30:00":"01:30PM to 02:45PM",
+    "14:45:00":"02:45PM to 04:00PM",
+    "15:00:00":"04:00PM to 05:15PM",
+    "16:15:00":"05:15PM to 06:30PM",
+    }
+    time_now = datetime.now()
+    time_early = time_now - timedelta(hours=1, minutes=15)
+    # time_advance = time_now + timedelta(hours=1, minutes=15)
     
+    present_time = time_now.strftime('%H:%M') 
+    one_hr_15_min_early = time_early.strftime('%H:%M:%S') 
+    # one_hr_15_min_ahead = time_advance.strftime('%H:%M:%S') 
+
+    one_hr_15_min_early = "15:50:35"
+    present_time = "16:50:35"
+
+    running_class = None
+    coming_class = None
+    for keys in times:
+        if one_hr_15_min_early <= keys and keys < present_time:
+            running_class = times[keys]
+        elif keys >= present_time:
+            coming_class = times[keys]
+            break
+
+    # print("Running Class:", running_class)
+    # print("Coming Class:", coming_class)
+
+    
+    # for keyy,vall in cls_routine.items():
+    #     print(keyy)
+    #     for i in vall:
+    #         if i:
+    #             print(i.time)
+
+
+    # print("TIME NOW ====> ",time_now)
+    # print("PRESENT TIME NOW ====> ",present_time)
+    # print("15 min EARLY ==> ",one_hr_15_min_early)
+
     context = {
         "exams":all_exams,
-        "routine":routine_maker(class_routine),
+        "routine":cls_routine,
         "announcements":announcements,
         "students":students,
-        "remain_task":assignments.count(),
+        "remain_task":assignments,
+        "running_class":running_class,
+        "coming_class":coming_class,
         
     }            
     return render(request, "pages/index.html", context)

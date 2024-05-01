@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django_filters',
     'chats',
     'django_extensions',
+    'dbbackup',
 ]
 
 MIDDLEWARE = [
@@ -68,28 +69,31 @@ TEMPLATES = [
 WSGI_APPLICATION = 'versity_cr_manage.wsgi.application'
 
 
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backup'}
+
 # DATABASE 1 - Sqlite
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # DATABASE -2 SQL
 
-load_dotenv()
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': 'localhost',  # or the hostname where  MySQL server is running
-        'PORT': os.getenv('DB_PORT'),      # or the port on which  MySQL server is listening
-    }
-}
+# load_dotenv()
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.getenv('DB_NAME'),
+#         'USER': os.getenv('DB_USER'),
+#         'PASSWORD': os.getenv('DB_PASSWORD'),
+#         'HOST': os.getenv('DB_HOST'),  # or the hostname where  MySQL server is running
+#         'PORT': os.getenv('DB_PORT'),      # or the port on which  MySQL server is listening
+#     }
+# }
 
 '''
 NOTEs :

@@ -25,12 +25,18 @@
     <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <div class="card highlight pt-1 mb-1 ">
-                <h5>Running - CSE 324(Database Lab) - Room:908 (B-2) | 
-                    Next - CSE320 Network Lab <span><i class="icon-clock"></i></span> 19:45:30</h5>
+                <h5>Running - {% if running_class %}CSE 324(Database Lab) - Room:908 (B-2) ({{running_class}}) {% endif %}| 
+                    Next - {% if coming_class %}CSE320 Network Lab <span><i class="icon-clock"></i></span> ({{coming_class}})</h5>{% endif %}
             </div>
             {% if remain_task %}
             <div class="card highlight1 mt-0 pt-1">
-                <marquee ><h5>CSE 324(Database Lab) - Room:908 (B-2) | 12:45AM</h5></marquee>
+                <marquee >
+                    <h5>
+                    {% for taskk in remain_task %}
+                        {{taskk.assignment_title}} | 
+                    {% endfor %}
+                    </h5>
+                </marquee>
             </div>
             {% endif %}
             <div class="card-body">
@@ -81,7 +87,7 @@
         <div class="risks-block high h-117">
             <i class="icon-warning1"></i>
             <div class="risk-details">
-                <h2>{{remain_task}}</h2>
+                <h2>{{remain_task.count}}</h2>
                 <p>Pending Assignments or Reports<span>(Check the tasks)</span></p>
             </div>
         </div>
