@@ -1366,7 +1366,9 @@ figure.user-card {
     border-right: 2px dashed #101214;
     height: 100%;
     display: block; }
-
+.timeline-row a{
+  color: #e9cc27;
+}
 .timeline-row {
   padding-left: 50%;
   position: relative;

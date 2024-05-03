@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 from .forms import *
 from .models import UpcomingExams, ClassRoutine
 from .filters import StudentFilter
-from .extra_code import routine_maker, allowed_users
+from .extra_code import routine_maker, allowed_users, RouniteCreator
 
 import os
 load_dotenv()
@@ -61,16 +61,21 @@ def homepage(request):
     cls_routine = routine_maker(class_routine)
 
     times = {
-    "08:00:00":"08:00AM to 09:15AM",
-    "09:15:00":"09:15AM to 10:30AM",
-    "10:30:00":"10:30AM to 11:45AM",
-    "11:45:00":"11:45AM to 01:00PM",
-    "13:30:00":"01:30PM to 02:45PM",
-    "14:45:00":"02:45PM to 04:00PM",
-    "15:00:00":"04:00PM to 05:15PM",
-    "16:15:00":"05:15PM to 06:30PM",
+    "08:00:00":"08:00AMto09:15AM",
+    "09:15:00":"09:15AMto10:30AM",
+    "10:30:00":"10:30AMto11:45AM",
+    "11:45:00":"11:45AMto01:00PM",
+    "13:30:00":"01:30PMto02:45PM",
+    "14:45:00":"02:45PMto04:00PM",
+    "15:00:00":"04:00PMto05:15PM",
+    "16:15:00":"05:15PMto06:30PM",
+    }
+    todays_classes = {
+
     }
     time_now = datetime.now()
+    today_is = datetime.weekday(time_now)
+    print("Today is ======>>>  ",datetime.weekday(time_now))
     time_early = time_now - timedelta(hours=1, minutes=15)
     # time_advance = time_now + timedelta(hours=1, minutes=15)
     
@@ -96,9 +101,17 @@ def homepage(request):
     
     # for keyy,vall in cls_routine.items():
     #     print(keyy)
-    #     for i in vall:
-    #         if i:
-    #             print(i.time)
+    #     print(vall)
+
+    rtn_obj = RouniteCreator(your_routine=class_routine)
+    # routine = rtn_obj.routine_genarator()
+    # print(routine)
+
+    print("====>>>> <<<<====","\n",rtn_obj.routine_genarator(class_routine, 
+                                    is_for_multiple_days=False, 
+                                    current_day=1
+                                    ))
+    
 
 
     # print("TIME NOW ====> ",time_now)
