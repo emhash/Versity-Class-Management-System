@@ -14,6 +14,13 @@
 <hr>
 <h2 align='center'> Versity class task management system </h2>
 
+
+<p>
+This project is helpful for the CRs who suffers to manage the class tasks. Each time the CR has to mention about the re-shedule classes, new assignments, notify about the upcoming CT or Tests and so on. All these different task have to perform in different platform such as - Google Classroom, Messenger, Whatsapp or Google Sheet and so on, What if all these can be manage in one platform ? 
+YES. This is the solution.
+  
+</p>
+
 ## Demo:
 
 Live Website: https://bubtcr.pythonanywhere.com/
@@ -21,13 +28,6 @@ Live Website: https://bubtcr.pythonanywhere.com/
 CR mail: demo@democr.com
 <br>
 Password: 111111qqqqqq
-
-
-<p>
-This project is helpful for the CRs who suffers to manage the class tasks. Each time the CR has to mention about the re-shedule classes, new assignments, notify about the upcoming CT or Tests and so on. All these different task have to perform in different platform such as - Google Classroom, Messenger, Whatsapp or Google Sheet and so on, What if all these can be manage in one platform ? 
-YES. This is the solution.
-  
-</p>
 
 ## Demo Screenshots
 
@@ -40,11 +40,13 @@ YES. This is the solution.
 </p>
 </div>
 
-![App Screenshot](https://github.com/emhash/Mini-Project-Python_2022/assets/109217697/8434472f-afb6-4d0c-9eed-15ea24754167)
-
 
 
 ## Locally Setup
+
+Note: You can add both MySQL or SQLite database. The configuration is added in the settings.py so you just have to uncomment the code and set database host, user, password and port. 
+
+Warning: If you face any database related error then you have to add the information by using python-dot-env or directly in the code of MySQL setup.
 
 Clone the repository & Navigate to the project directory:
 
@@ -55,6 +57,7 @@ Clone the repository & Navigate to the project directory:
 ```
 
 Create a virtual envoirnment:
+
 ```bash 
 python -m venv myenv
 ```
@@ -62,7 +65,7 @@ Active virtual envoirnment with Bash terminal:
 ```bash 
 source myenv/Scripts/activate
 ```
-(You can activate the virtual envoirnment using any terminal)
+(You can activate the virtual envoirnment using any terminal. Based on the terminal the activation process of virtual envoirnment might be different)
 
 Now install the necessary module & start the server:
 ```bash 
@@ -86,4 +89,7 @@ python manage.py migrate
 ## Author
 
 - [@emhash](https://www.github.com/emhash)
+
+![App Screenshot](https://github.com/emhash/Mini-Project-Python_2022/assets/109217697/8434472f-afb6-4d0c-9eed-15ea24754167)
+
 
