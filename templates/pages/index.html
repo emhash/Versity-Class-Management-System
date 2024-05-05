@@ -110,103 +110,27 @@
 
         <div class="timeline">
             
-            {% comment %} {% for assign in assignments %} {% endcomment %}
+            {% for data in timeline %}
             <div class="timeline-row">
-                <a href="#">
+                
                     <div class="timeline-time">
-                        12 july, 2024<small>12.00 AM</small>
+                        {{data.date}}<small>12.00 AM</small>
                     </div>
                     <div class="timeline-content">
                         <i class="icon-code"></i>
-                        <h4>Assignment</h4>
+                        <h4>{% if data.topic %}Exam{% else %}{{data.get_types_display}}{% endif %}</h4>
                         <p>
-                            AI theory assingment on deep learning.
+                            {% if data.details %}
+                            {{data.details|truncatewords:5}}
+                            {% elif data.detail|truncatewords:5%}
+                            {{data.detail}}
+                            {% endif %}
                         </p>
                         
-                        <div class="">
-                            <span class="badge badge-pill badge-white">CSE351</span>
-                            <span class="badge badge-pill badge-white">Artificial Intelegence</span>
-                        </div>
                     </div>
-                </a>
+                
             </div>
-            <div class="timeline-row">
-                <a href="#">
-                    <div class="timeline-time">
-                        12 july, 2024<small>12.00 AM</small>
-                    </div>
-                    <div class="timeline-content">
-                        <i class="icon-code"></i>
-                        <h4>Assignment</h4>
-                        <p>
-                            AI theory assingment on deep learning.
-                        </p>
-                        
-                        <div class="">
-                            <span class="badge badge-pill badge-white">CSE351</span>
-                            <span class="badge badge-pill badge-white">Artificial Intelegence</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="timeline-row">
-                <a href="#">
-                    <div class="timeline-time">
-                        12 july, 2024<small>12.00 AM</small>
-                    </div>
-                    <div class="timeline-content">
-                        <i class="icon-code"></i>
-                        <h4>Assignment</h4>
-                        <p>
-                            AI theory assingment on deep learning.
-                        </p>
-                        
-                        <div class="">
-                            <span class="badge badge-pill badge-white">CSE351</span>
-                            <span class="badge badge-pill badge-white">Artificial Intelegence</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="timeline-row">
-                <a href="#">
-                    <div class="timeline-time">
-                        12 july, 2024<small>12.00 AM</small>
-                    </div>
-                    <div class="timeline-content">
-                        <i class="icon-code"></i>
-                        <h4>Assignment</h4>
-                        <p>
-                            AI theory assingment on deep learning.
-                        </p>
-                        
-                        <div class="">
-                            <span class="badge badge-pill badge-white">CSE351</span>
-                            <span class="badge badge-pill badge-white">Artificial Intelegence</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="timeline-row">
-                <a href="#">
-                    <div class="timeline-time">
-                        12 july, 2024<small>12.00 AM</small>
-                    </div>
-                    <div class="timeline-content">
-                        <i class="icon-code"></i>
-                        <h4>Assignment</h4>
-                        <p>
-                            AI theory assingment on deep learning.
-                        </p>
-                        
-                        <div class="">
-                            <span class="badge badge-pill badge-white">CSE351</span>
-                            <span class="badge badge-pill badge-white">Artificial Intelegence</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            {% comment %} {% endfor %} {% endcomment %}
+            {% endfor %}
             
         </div>
        

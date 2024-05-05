@@ -52,6 +52,16 @@ def homepage(request):
         account__is_approved = True,
     ).order_by("personal_id")[:8]
 
+    timeline = []
+    # counter = max(assignments.count(), all_exams.count())
+    for data in assignments:
+        timeline.append(data)
+    for data in all_exams:
+        timeline.append(data)
+    
+    # for d in timeline:
+    #     print(d)
+
 
     # ------ Retrive class routine for specific intake , section ------
     class_routine = ClassRoutine.objects.filter(intake = his_intake, 
@@ -126,6 +136,7 @@ def homepage(request):
         "remain_task":assignments,
         "running_class":running_class,
         "coming_class":coming_class,
+        "timeline":timeline,
         
     }            
     return render(request, "pages/index.html", context)
