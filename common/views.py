@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 from .forms import *
 from .models import UpcomingExams, ClassRoutine
 from .filters import StudentFilter
-from .extra_code import routine_maker, allowed_users, RouniteCreator
+from .extra_code import allowed_users, RouniteCreator
 
 import os
 load_dotenv()
@@ -68,7 +68,6 @@ def homepage(request):
                                                 section = his_section, 
                                                 department = his_department
                                                 )
-    cls_routine = routine_maker(class_routine)
 
     times = {
     "08:00:00":"08:00AMto09:15AM",
@@ -89,8 +88,8 @@ def homepage(request):
     time_early = time_now - timedelta(hours=1, minutes=15)
     # time_advance = time_now + timedelta(hours=1, minutes=15)
     
-    present_time = time_now.strftime('%H:%M') 
-    one_hr_15_min_early = time_early.strftime('%H:%M:%S') 
+    # present_time = time_now.strftime('%H:%M') 
+    # one_hr_15_min_early = time_early.strftime('%H:%M:%S') 
     # one_hr_15_min_ahead = time_advance.strftime('%H:%M:%S') 
 
     one_hr_15_min_early = "15:50:35"
@@ -105,29 +104,10 @@ def homepage(request):
             coming_class = times[keys]
             break
 
-    # print("Running Class:", running_class)
-    # print("Coming Class:", coming_class)
-
-    
-    # for keyy,vall in cls_routine.items():
-    #     print(keyy)
-    #     print(vall)
-
     rtn_obj = RouniteCreator(your_routine=class_routine)
-    # routine = rtn_obj.routine_genarator()
-    # print(routine)
+    print("------ ", rtn_obj.routine_genarator(is_for_multiple_days=False,current_day=1) ," ------")
 
-    print("====>>>> <<<<====","\n",rtn_obj.routine_genarator(class_routine, 
-                                    is_for_multiple_days=False, 
-                                    current_day=1
-                                    ))
-    
-
-
-    # print("TIME NOW ====> ",time_now)
-    # print("PRESENT TIME NOW ====> ",present_time)
-    # print("15 min EARLY ==> ",one_hr_15_min_early)
-
+    cls_routine = rtn_obj.routine_genarator(days=7)
     context = {
         "exams":all_exams,
         "routine":cls_routine,
@@ -408,7 +388,7 @@ def add_routine(request):
                                                 department = student.department
                                                 ).order_by('time')
     
-    routine = routine_maker(your_routine)
+    routine = RouniteCreator(your_routine).routine_genarator(days=7)
 
     context = {
         "routine":routine,
