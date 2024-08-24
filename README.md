@@ -25,9 +25,9 @@ YES. This is the solution.
 
 Live Website: https://bubtcr.pythonanywhere.com/
 <br>
-CR mail: demo@democr.com
+CR mail: demo@gmail.com
 <br>
-Password: 111111qqqqqq
+Password: demo1234
 
 ## Demo Screenshots
 
